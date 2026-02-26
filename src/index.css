@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #681E28;
+  --color-primary-light: #8E3B46;
+  --color-secondary: #C5A059;
+  --color-secondary-dark: #8C6E36;
+  --color-background-light: #FDFBF7;
+  --color-background-dark: #1A1514;
+  --color-accent: #4A3B32;
+  --color-paper: #F4F1EA;
+
+  --font-display: "Cinzel Decorative", serif;
+  --font-serif: "Playfair Display", serif;
+  --font-script: "Pinyon Script", cursive;
+
+  --background-image-damask-pattern: url('https://www.transparenttextures.com/patterns/black-scales.png');
+  --background-image-parchment-texture: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+
+  --shadow-wax: 0 4px 8px -1px rgba(104, 30, 40, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  --shadow-gold: 0 0 15px rgba(197, 160, 89, 0.3);
+
+  --animate-slow-pan: slow-pan 20s ease-in-out infinite;
+  --animate-float-elegant: float-elegant 4s ease-in-out infinite;
+
+  @keyframes slow-pan {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.05) translate(-1%, -1%); }
+    100% { transform: scale(1) translate(0, 0); }
+  }
+  @keyframes float-elegant {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+  .border-victorian {
+    border-style: double;
+    border-width: 6px;
+    border-color: var(--color-secondary);
+  }
+  .bg-damask {
+    background-color: var(--color-background-light);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C5A059' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .ornate-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+  }
+  .ornate-divider::before, .ornate-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid var(--color-secondary);
+    margin: 0 1rem;
+  }
+  .sepia-charcoal {
+    filter: grayscale(100%) sepia(30%) contrast(120%);
+  }
+}
