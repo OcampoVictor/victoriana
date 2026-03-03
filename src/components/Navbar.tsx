@@ -84,7 +84,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="fixed bottom-0 md:top-0 md:bottom-auto left-0 w-full z-40 bg-primary text-white shadow-[0_-10px_40px_rgba(0,0,0,0.3)] md:shadow-2xl border-t md:border-t-0 md:border-b border-white/10"
+            className="fixed bottom-0 left-0 w-full z-40 bg-primary text-white shadow-[0_-10px_40px_rgba(0,0,0,0.3)] border-t border-white/10"
           >
             <div className="max-w-[1080px] mx-auto px-4 h-16 flex items-center justify-between">
               {/* Left: Music Toggle */}

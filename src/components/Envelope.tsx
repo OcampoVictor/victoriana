@@ -13,6 +13,15 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
     if (isOpen) return;
     setIsOpen(true);
     
+    // Play paper sound
+    try {
+      const audio = new Audio('https://actions.google.com/sounds/v1/foley/paper_rustle.ogg');
+      audio.volume = 0.5;
+      audio.play().catch(e => console.log('Audio play failed:', e));
+    } catch (e) {
+      // Ignore audio errors
+    }
+
     // Swap z-index halfway through the flap opening (0.4s) to allow letter to slide out in front of it
     setTimeout(() => {
       setZIndexSwapped(true);
@@ -28,9 +37,31 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
     <motion.div
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900/95 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900/95 backdrop-blur-md overflow-hidden"
     >
-      <div className="relative w-[320px] sm:w-[400px] md:w-[600px] h-[220px] sm:h-[280px] md:h-[400px] cursor-pointer" onClick={handleOpen}>
+      {/* Decorative background glows */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-secondary/20 blur-[120px]"></div>
+        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[100px]"></div>
+      </div>
+
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.div 
+            exit={{ opacity: 0, y: -20 }}
+            className="flex flex-col items-center text-center z-10 mb-16 md:mb-24"
+          >
+            <span className="text-white/80 font-display tracking-[0.4em] uppercase text-xs md:text-sm mb-6 md:mb-8">
+              Estás cordialmente invitado
+            </span>
+            <h1 className="text-white font-script text-5xl md:text-7xl drop-shadow-lg">
+              Nuestra Boda
+            </h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative w-[320px] sm:w-[400px] md:w-[600px] h-[220px] sm:h-[280px] md:h-[400px] cursor-pointer z-10" onClick={handleOpen}>
         {/* Envelope Back */}
         <div className="absolute inset-0 bg-[#e0d8c3] shadow-2xl rounded-sm z-0"></div>
 
@@ -101,20 +132,11 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
         {!isOpen && (
           <motion.div 
             exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-10 md:bottom-20 flex flex-col items-center gap-4 md:gap-6"
+            className="flex flex-col items-center mt-16 md:mt-24 z-10"
           >
             <p className="text-white/70 font-display tracking-[0.2em] uppercase text-xs md:text-sm animate-pulse">
               Toca el sello para abrir
             </p>
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                handleOpen();
-              }}
-              className="px-6 py-2 md:px-8 md:py-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm border border-white/20 transition-all font-serif italic text-sm md:text-base"
-            >
-              Ver Invitación
-            </button>
           </motion.div>
         )}
       </AnimatePresence>

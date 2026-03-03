@@ -6,7 +6,13 @@ export default function OurStory() {
       <div className="absolute left-0 top-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/flower-trail.png')] opacity-5"></div>
       <div className="layout-content-container flex flex-col max-w-[1080px] flex-1 px-6 lg:px-12 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 flex flex-col gap-6 lg:pr-8 text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="order-2 lg:order-1 flex flex-col gap-6 lg:pr-8 text-center lg:text-left"
+          >
             <div>
               <span className="text-secondary text-xs tracking-[0.4em] font-display uppercase block mb-4 border-l-4 border-primary pl-4">
                 Nuestra Historia
@@ -26,10 +32,12 @@ export default function OurStory() {
                 Ahora, les invitamos a ser testigos del comienzo de nuestro capítulo más importante.
               </p>
             </div>
-          </div>
+          </motion.div>
           <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="order-1 lg:order-2 relative p-6 bg-white shadow-2xl rotate-1 border border-secondary/20"
           >
             <div className="absolute -top-3 -right-3 w-24 h-24 border-t-[6px] border-r-[6px] border-secondary/60 z-20"></div>

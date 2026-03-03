@@ -5,16 +5,30 @@ export default function DressCode() {
   const [activeTab, setActiveTab] = useState<'mujeres' | 'hombres'>('mujeres');
 
   return (
-    <div className="w-full flex justify-center py-20 bg-background-light border-t-4 border-double border-secondary/20">
+    <div className="w-full flex justify-center py-20 bg-background-light border-t-4 border-double border-secondary/20 overflow-hidden">
       <div className="layout-content-container flex flex-col items-center max-w-[1080px] flex-1 px-4 lg:px-8 text-center">
-        <span className="material-symbols-outlined text-secondary text-5xl mb-4">checkroom</span>
-        <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-6 text-center">Código de Vestimenta</h2>
-        <div className="w-24 h-px bg-secondary/50 mb-8"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center w-full"
+        >
+          <span className="material-symbols-outlined text-secondary text-5xl mb-4">checkroom</span>
+          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-6 text-center">Código de Vestimenta</h2>
+          <div className="w-24 h-px bg-secondary/50 mb-8"></div>
+          
+          <h3 className="text-slate-800 text-2xl font-bold font-serif mb-2">Rigurosa Etiqueta</h3>
+          <p className="text-slate-600 font-serif italic mb-12 text-xl max-w-2xl mx-auto">Para acompañarnos en esta velada tan especial, sugerimos los siguientes atuendos.</p>
+        </motion.div>
         
-        <h3 className="text-slate-800 text-2xl font-bold font-serif mb-2">Rigurosa Etiqueta</h3>
-        <p className="text-slate-600 font-serif italic mb-12 text-xl max-w-2xl mx-auto">Para acompañarnos en esta velada tan especial, sugerimos los siguientes atuendos.</p>
-        
-        <div className="w-full max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="w-full max-w-4xl mx-auto"
+        >
           {/* Tabs */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex bg-white border border-secondary/30 p-1 rounded-full shadow-sm">
@@ -42,7 +56,7 @@ export default function DressCode() {
           </div>
 
           {/* Content */}
-          <div className="bg-white border border-secondary/20 shadow-xl overflow-hidden relative min-h-[600px] md:min-h-[450px]">
+          <div className="bg-white border border-secondary/20 shadow-xl overflow-hidden relative min-h-[700px] md:min-h-[550px]">
             <AnimatePresence mode="wait">
               {activeTab === 'mujeres' && (
                 <motion.div
@@ -53,11 +67,11 @@ export default function DressCode() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="flex flex-col md:flex-row h-full absolute inset-0"
                 >
-                  <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden">
+                  <div className="w-full md:w-1/2 h-96 md:h-full relative overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1566162963464-32537243644f?q=80&w=1000&auto=format&fit=crop" 
+                      src="https://i.postimg.cc/7P0WX99X/tema_victoria_mujer.jpg" 
                       alt="Vestido largo de noche" 
-                      className="w-full h-full object-cover sepia-[0.2]"
+                      className="w-full h-full object-cover object-top sepia-[0.2]"
                     />
                   </div>
                   <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-paper h-full text-left">
@@ -81,11 +95,11 @@ export default function DressCode() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="flex flex-col md:flex-row h-full absolute inset-0"
                 >
-                  <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden">
+                  <div className="w-full md:w-1/2 h-96 md:h-full relative overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=1000&auto=format&fit=crop" 
+                      src="https://i.postimg.cc/NGmzbDDd/tema_victoriana_hombre.jpg" 
                       alt="Esmoquin o traje oscuro" 
-                      className="w-full h-full object-cover sepia-[0.2]"
+                      className="w-full h-full object-cover object-top sepia-[0.2]"
                     />
                   </div>
                   <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-paper h-full text-left">
@@ -101,7 +115,7 @@ export default function DressCode() {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

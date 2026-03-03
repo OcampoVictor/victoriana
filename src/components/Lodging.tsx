@@ -1,19 +1,35 @@
+import { motion } from 'motion/react';
+
 export default function Lodging() {
   return (
     <div className="w-full flex justify-center py-20 bg-paper border-t border-secondary/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-damask opacity-5 pointer-events-none"></div>
       <div className="layout-content-container flex flex-col items-center max-w-[1024px] flex-1 px-4 lg:px-8 relative z-10">
-        <span className="material-symbols-outlined text-secondary text-5xl mb-4">bed</span>
-        <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-6 text-center">Hospedaje</h2>
-        <div className="w-24 h-px bg-secondary/50 mb-12"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center w-full"
+        >
+          <span className="material-symbols-outlined text-secondary text-5xl mb-4">bed</span>
+          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-6 text-center">Hospedaje</h2>
+          <div className="w-24 h-px bg-secondary/50 mb-12"></div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           {/* Option 1 */}
-          <div className="bg-white border border-secondary/30 shadow-md relative group hover:border-primary transition-colors flex flex-col">
+          <motion.div 
+            initial={{ opacity: 0, x: -30, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="bg-white border border-secondary/30 shadow-md relative group hover:border-primary transition-colors flex flex-col"
+          >
             <div className="absolute top-0 left-0 w-full h-1 bg-secondary/50 group-hover:bg-primary transition-colors z-10"></div>
             <div className="relative w-full h-48 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1542314831-c6a4d14d837e?q=80&w=1000&auto=format&fit=crop" 
+                src="https://i.postimg.cc/xjM4g55t/tema_victoriana_hotel_boutique.jpg" 
                 alt="Hotel Boutique San José" 
                 className="w-full h-full object-cover sepia-[0.2] group-hover:scale-105 transition-transform duration-700"
               />
@@ -37,14 +53,20 @@ export default function Lodging() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Option 2 */}
-          <div className="bg-white border border-secondary/30 shadow-md relative group hover:border-primary transition-colors flex flex-col">
+          <motion.div 
+            initial={{ opacity: 0, x: 30, y: 20 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="bg-white border border-secondary/30 shadow-md relative group hover:border-primary transition-colors flex flex-col"
+          >
             <div className="absolute top-0 left-0 w-full h-1 bg-secondary/50 group-hover:bg-primary transition-colors z-10"></div>
             <div className="relative w-full h-48 overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1551882547-ff40c0d13c05?q=80&w=1000&auto=format&fit=crop" 
+                src="https://i.postimg.cc/L4LbvDDV/tema_victoriana_hotel_oaxaca.jpg" 
                 alt="Grand Hotel Oaxaca" 
                 className="w-full h-full object-cover sepia-[0.2] group-hover:scale-105 transition-transform duration-700"
               />
@@ -68,7 +90,7 @@ export default function Lodging() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
