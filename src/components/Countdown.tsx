@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Hourglass } from 'lucide-react';
 
 export default function Countdown() {
   const targetDate = new Date('2026-10-12T16:00:00').getTime();
@@ -25,14 +26,14 @@ export default function Countdown() {
   }, [targetDate]);
 
   return (
-    <div className="w-full flex justify-center py-16 lg:py-24 bg-paper border-y-4 border-double border-secondary relative overflow-hidden">
+    <div id="cuenta-regresiva" className="w-full flex justify-center py-16 lg:py-24 bg-paper border-y-4 border-double border-secondary relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBM5QZ9GuTKWG8RDAERhSRoj564_7HUSZVqkr2Mhr2VbiaNLgC42qTZj627lBvpNrGGLEOUDjX0iIbnrcZDwLU07kVb3YQ3ov43FY1RR5hHCm7CTe-2vMdldhN8xKV93RB0KTi6IjS99TGvCK6_Bf61bNLllHhUidwZog64D3AHGQHKkeuDjKrEG_ch1ThoNeuJMEl47Nue-DDe1eYeHidoB4Lmbg4mAkKVnKm612eQSrbEw5dGee_ztKqjkxFQ2QqPzilEqjhmtcfQ')" }}
       ></div>
       <div className="layout-content-container flex flex-col items-center max-w-[960px] flex-1 px-4 lg:px-8 relative z-10">
-        <span className="material-symbols-outlined text-secondary text-7xl mb-6 animate-pulse" style={{ animationDuration: '3s' }}>hourglass_top</span>
-        <h2 className="text-primary dark:text-primary-light text-3xl md:text-4xl tracking-[0.1em] font-script mb-12 text-center">
+        <Hourglass className="text-secondary mb-6 animate-pulse" size={64} style={{ animationDuration: '3s' }} strokeWidth={1.5} />
+        <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-12 text-center">
           La Cuenta Regresiva
         </h2>
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">

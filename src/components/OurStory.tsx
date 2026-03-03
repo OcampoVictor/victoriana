@@ -26,13 +26,6 @@ export default function OurStory() {
                 Ahora, les invitamos a ser testigos del comienzo de nuestro capítulo más importante.
               </p>
             </div>
-            <div className="pt-6 flex justify-center lg:justify-start">
-              <img
-                alt="vintage flower"
-                className="h-24 opacity-40 mix-blend-multiply grayscale contrast-150"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSOWYzb-qKuhldhJnwdaWQtrVDeEe8GNFw-HFHA7XE1qscZzdTeeR7SNcQAI9NTTdefygw5FI2ExE6_JdTqew5GbRXOoRjE8ayiR7-3HaJD9KbPw2JIezbJoJZ-9-1dCtGAPDklVtPS2vK-ndHpem_A84LYb0Zv2zj0M_X-iL85_XTulOjDV6ix-g2q1CDwJHOkYg7hZcSyIX_zprfiW_GZ8zDeRg3wKZ0cWSIYqEX74hgmZAJ5FwudEBktxf7SVs-oxpycDQigGcO"
-              />
-            </div>
           </div>
           <motion.div 
             animate={{ y: [0, -15, 0] }}

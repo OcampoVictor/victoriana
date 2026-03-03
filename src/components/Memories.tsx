@@ -48,7 +48,7 @@ export default function Memories() {
           className="flex flex-col items-center justify-center mb-12"
         >
           <span className="material-symbols-outlined text-secondary text-4xl mb-2">camera_enhance</span>
-          <h2 className="text-4xl font-display text-primary tracking-[0.2em] uppercase border-y-2 border-secondary py-3 px-8">Memorias</h2>
+          <h2 className="text-5xl lg:text-7xl font-script leading-tight text-primary text-center border-y-2 border-secondary py-3 px-8">Memorias</h2>
         </motion.div>
         
         <motion.div 

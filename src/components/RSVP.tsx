@@ -7,7 +7,7 @@ export default function RSVP() {
           <span className="text-secondary font-display text-xs tracking-[0.3em] font-bold uppercase block mb-6">
             Por Favor Responder Antes Del
           </span>
-          <h2 className="text-primary text-4xl md:text-5xl font-display uppercase tracking-widest border-b-2 border-secondary inline-block pb-2 mb-4">1 de Septiembre</h2>
+          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight border-b-2 border-secondary inline-block pb-2 mb-4 text-center">1 de Septiembre</h2>
           <p className="text-accent font-serif italic text-xl max-w-md mx-auto mt-6">
             "La felicidad solo es real cuando es compartida."
           </p>

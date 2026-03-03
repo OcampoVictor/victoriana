@@ -12,14 +12,6 @@ export default function Footer() {
           <p className="text-secondary text-xs font-display tracking-[0.3em] uppercase">12 • Oct • 2024</p>
           <span className="h-px w-16 bg-secondary"></span>
         </div>
-        <div className="flex gap-8">
-          <button className="group w-14 h-14 flex items-center justify-center rounded-full border border-secondary/50 text-secondary hover:bg-secondary hover:text-[#1A1514] transition-all duration-500">
-            <span className="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">mail</span>
-          </button>
-          <button className="group w-14 h-14 flex items-center justify-center rounded-full border border-secondary/50 text-secondary hover:bg-secondary hover:text-[#1A1514] transition-all duration-500">
-            <span className="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">share</span>
-          </button>
-        </div>
         <p className="text-white/30 text-[10px] mt-16 font-sans tracking-widest uppercase">Diseño Victoriano Elegante</p>
       </div>
     </footer>

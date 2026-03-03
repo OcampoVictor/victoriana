@@ -37,7 +37,7 @@ export default function Timeline() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-primary text-5xl lg:text-7xl font-script mb-6 drop-shadow-sm">Cronograma del Día</h2>
+          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-6 text-center drop-shadow-sm">Cronograma del Día</h2>
           <div className="flex justify-center items-center gap-4">
             <div className="h-[1px] w-12 bg-secondary"></div>
             <span className="material-symbols-outlined text-secondary text-2xl">schedule</span>
