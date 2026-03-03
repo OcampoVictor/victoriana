@@ -1,18 +1,47 @@
+import { motion } from 'motion/react';
+
 export default function RSVP() {
   return (
-    <div className="w-full flex justify-center py-24 bg-damask relative" id="rsvp-section">
+    <div className="w-full flex justify-center py-24 bg-damask relative overflow-hidden" id="rsvp-section">
       <div className="absolute inset-0 bg-primary/5"></div>
+      
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-secondary/10 blur-[100px]"></div>
+        <div className="absolute top-[60%] -right-[10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[80px]"></div>
+      </div>
+
       <div className="layout-content-container flex flex-col max-w-[800px] flex-1 px-4 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-secondary font-display text-xs tracking-[0.3em] font-bold uppercase block mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <span className="text-secondary font-display text-sm tracking-[0.4em] font-bold uppercase block mb-4">
+            Estás cordialmente invitado
+          </span>
+          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight mb-8 text-center">
+            Acompáñanos en este día
+          </h2>
+          <div className="w-24 h-px bg-secondary/50 mx-auto mb-8"></div>
+          <span className="text-accent font-display text-xs tracking-[0.3em] font-bold uppercase block mb-4">
             Por Favor Responder Antes Del
           </span>
-          <h2 className="text-primary text-5xl lg:text-7xl font-script leading-tight border-b-2 border-secondary inline-block pb-2 mb-4 text-center">1 de Septiembre</h2>
-          <p className="text-accent font-serif italic text-xl max-w-md mx-auto mt-6">
+          <p className="text-primary text-3xl font-serif italic mb-4 text-center">1 de Septiembre</p>
+          <p className="text-accent font-serif italic text-lg max-w-md mx-auto mt-6">
             "La felicidad solo es real cuando es compartida."
           </p>
-        </div>
-        <div className="bg-[#FDFBF7] p-8 md:p-16 shadow-2xl border-double border-4 border-secondary/40 relative mx-4 md:mx-0">
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          className="bg-[#FDFBF7] p-8 md:p-16 shadow-2xl border-double border-4 border-secondary/40 relative mx-4 md:mx-0"
+        >
           <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-primary rounded-full shadow-wax flex items-center justify-center border-4 border-primary-light/30 z-20">
             <span className="text-secondary font-script text-3xl font-bold pt-1 pr-1">S&amp;M</span>
           </div>
@@ -44,7 +73,7 @@ export default function RSVP() {
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

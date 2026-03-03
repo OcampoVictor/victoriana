@@ -6,7 +6,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
 import Envelope from './components/Envelope';
-import CornerOrnaments from './components/CornerOrnaments';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Countdown from './components/Countdown';
@@ -43,7 +42,6 @@ export default function App() {
       
       <Navbar />
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden border-[16px] border-double border-secondary/20 m-0">
-        <CornerOrnaments />
         <div className="layout-container flex h-full grow flex-col">
           <Hero />
           <Countdown />
