@@ -6,12 +6,10 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
+  // Remove the old audioRef and initialization block
   useEffect(() => {
-    // Audio setup
-    audioRef.current = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Placeholder romantic song
-    audioRef.current.loop = true;
+    const handleMusicStarted = () => setIsPlaying(true);
+    window.addEventListener('musicStarted', handleMusicStarted);
 
     const handleScroll = () => {
       const countdownElement = document.getElementById('cuenta-regresiva');
@@ -36,22 +34,21 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
+      window.removeEventListener('musicStarted', handleMusicStarted);
     };
   }, []);
 
   const toggleMusic = () => {
-    if (!audioRef.current) return;
-    
+    const bgMusic = document.getElementById('bg-music') as HTMLAudioElement | null;
+    if (!bgMusic) return;
+
     if (isPlaying) {
-      audioRef.current.pause();
+      bgMusic.pause();
     } else {
-      audioRef.current.play().catch(e => console.log("Audio play failed:", e));
+      bgMusic.play().catch(e => console.log("Audio play failed:", e));
     }
     setIsPlaying(!isPlaying);
   };
@@ -88,7 +85,7 @@ export default function Navbar() {
           >
             <div className="max-w-[1080px] mx-auto px-4 h-16 flex items-center justify-between">
               {/* Left: Music Toggle */}
-              <button 
+              <button
                 onClick={toggleMusic}
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors border border-white/20"
                 aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
@@ -106,7 +103,7 @@ export default function Navbar() {
               </div>
 
               {/* Right: Hamburger Menu */}
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(true)}
                 className="flex items-center gap-2 text-white/90 hover:text-secondary transition-colors"
                 aria-label="Abrir menú"
@@ -131,7 +128,7 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(false)}
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
             />
-            
+
             {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
@@ -141,18 +138,18 @@ export default function Navbar() {
               className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-paper z-50 shadow-2xl border-l-4 border-double border-secondary/30 flex flex-col"
             >
               <div className="p-6 flex justify-end">
-                <button 
+                <button
                   onClick={() => setIsMenuOpen(false)}
                   className="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:text-primary hover:bg-secondary/10 transition-colors"
                 >
                   <X className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </div>
-              
+
               <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
                 <span className="font-script text-5xl text-primary mb-4">S & M</span>
                 <div className="w-12 h-px bg-secondary/50 mb-4"></div>
-                
+
                 {navLinks.map((link, index) => (
                   <button
                     key={index}
@@ -164,7 +161,7 @@ export default function Navbar() {
                   </button>
                 ))}
               </div>
-              
+
               <div className="p-8 text-center">
                 <p className="text-xs font-serif italic text-slate-500">12 de Octubre, 2026</p>
               </div>

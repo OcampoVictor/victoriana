@@ -12,7 +12,7 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
   const handleOpen = () => {
     if (isOpen) return;
     setIsOpen(true);
-    
+
     // Play paper sound
     try {
       const audio = new Audio('https://actions.google.com/sounds/v1/foley/paper_rustle.ogg');
@@ -26,6 +26,14 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
     setTimeout(() => {
       setZIndexSwapped(true);
     }, 400);
+
+    const bgMusic = document.getElementById('bg-music') as HTMLAudioElement | null;
+    if (bgMusic) {
+      bgMusic.volume = 0.6;
+      bgMusic.play().then(() => {
+        window.dispatchEvent(new Event('musicStarted'));
+      }).catch(e => console.log('Audio play failed:', e));
+    }
 
     // Wait for the animation to complete before unmounting
     setTimeout(() => {
@@ -47,7 +55,7 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
 
       <AnimatePresence>
         {!isOpen && (
-          <motion.div 
+          <motion.div
             exit={{ opacity: 0, y: -20 }}
             className="flex flex-col items-center text-center z-10 mb-16 md:mb-24"
           >
@@ -66,10 +74,10 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
         <div className="absolute inset-0 bg-[#e0d8c3] shadow-2xl rounded-sm z-0"></div>
 
         {/* Letter Inside */}
-        <motion.div 
+        <motion.div
           initial={{ y: 0, opacity: 1, scale: 1 }}
           animate={isOpen ? { y: "-80%", opacity: 0, scale: 0.9 } : { y: 0, opacity: 1, scale: 1 }}
-          transition={{ 
+          transition={{
             y: { delay: 0.8, duration: 1.2, ease: "easeInOut" },
             opacity: { delay: 1.2, duration: 0.8, ease: "easeInOut" },
             scale: { delay: 0.8, duration: 1.2, ease: "easeInOut" }
@@ -83,29 +91,29 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
         </motion.div>
 
         {/* Left Flap */}
-        <div 
-          className="absolute inset-0 bg-[#d1c7b1] z-20" 
+        <div
+          className="absolute inset-0 bg-[#d1c7b1] z-20"
           style={{ clipPath: 'polygon(0 0, 50% 50%, 0 100%)' }}
         ></div>
-        
+
         {/* Right Flap */}
-        <div 
-          className="absolute inset-0 bg-[#d1c7b1] z-20" 
+        <div
+          className="absolute inset-0 bg-[#d1c7b1] z-20"
           style={{ clipPath: 'polygon(100% 0, 50% 50%, 100% 100%)' }}
         ></div>
-        
+
         {/* Bottom Flap */}
-        <div 
-          className="absolute inset-0 bg-[#c5bba4] z-30 drop-shadow-[-2px_-2px_4px_rgba(0,0,0,0.1)]" 
+        <div
+          className="absolute inset-0 bg-[#c5bba4] z-30 drop-shadow-[-2px_-2px_4px_rgba(0,0,0,0.1)]"
           style={{ clipPath: 'polygon(0 100%, 50% 50%, 100% 100%)' }}
         ></div>
 
         {/* Top Flap */}
-        <motion.div 
+        <motion.div
           animate={isOpen ? { rotateX: 180 } : { rotateX: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          style={{ 
-            transformOrigin: 'top', 
+          style={{
+            transformOrigin: 'top',
             clipPath: 'polygon(0 0, 100% 0, 50% 50%)',
             zIndex: zIndexSwapped ? 5 : 40
           }}
@@ -115,7 +123,7 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
         {/* Wax Seal */}
         <AnimatePresence>
           {!isOpen && (
-            <motion.div 
+            <motion.div
               exit={{ opacity: 0, scale: 0 }}
               transition={{ duration: 0.3 }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-20 h-20 md:w-28 md:h-28 bg-primary rounded-full shadow-[0_4px_10px_rgba(0,0,0,0.3)] flex items-center justify-center border-2 border-primary-light hover:scale-105 transition-transform"
@@ -127,10 +135,10 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
           )}
         </AnimatePresence>
       </div>
-      
+
       <AnimatePresence>
         {!isOpen && (
-          <motion.div 
+          <motion.div
             exit={{ opacity: 0, y: 10 }}
             className="flex flex-col items-center mt-16 md:mt-24 z-10"
           >

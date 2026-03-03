@@ -39,7 +39,7 @@ export default function App() {
       <AnimatePresence>
         {!isOpened && <Envelope onOpen={() => setIsOpened(true)} />}
       </AnimatePresence>
-      
+
       <Navbar />
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden border-[16px] border-double border-secondary/20 m-0">
         <div className="layout-container flex h-full grow flex-col">
@@ -58,6 +58,7 @@ export default function App() {
           <Footer />
         </div>
       </div>
+      <audio id="bg-music" src="/lady-gaga-die-with-a-smile.mp3" preload="auto" loop></audio>
     </div>
   );
 }
